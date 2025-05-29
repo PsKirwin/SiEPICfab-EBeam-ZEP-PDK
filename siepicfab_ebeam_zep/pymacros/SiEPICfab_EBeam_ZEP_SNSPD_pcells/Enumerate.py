@@ -4,7 +4,7 @@
 from . import *
 import pya
 from pya import *
-import math
+import numpy as np
 class Enumerate(pya.PCellDeclarationHelper):
   def __init__(self):
     super(Enumerate, self).__init__()

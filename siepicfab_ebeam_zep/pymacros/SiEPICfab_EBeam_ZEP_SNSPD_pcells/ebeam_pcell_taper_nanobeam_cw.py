@@ -4,13 +4,13 @@ from pya import *
 import math
 
 
-class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
+class ebeam_pcell_taper_nanobeam_cw(pya.PCellDeclarationHelper):
     """
     Input: length, width
     """
 
     def __init__(self):
-        super(ebeam_pcell_taper_nanobeam, self).__init__()
+        super(ebeam_pcell_taper_nanobeam_cw, self).__init__()
         from SiEPIC.utils import get_technology_by_name, load_Waveguides_by_Tech
         self.technology_name = 'SiEPICfab_EBeam_ZEP'
         TECHNOLOGY = get_technology_by_name(self.technology_name)
@@ -133,7 +133,7 @@ class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
             return polygon_points
         
 
-        params = np.array([5.22384374e-08, 6.06573970e-08, 6.79309922e-08, 7.64681666e-08, 8.56607337e-08, 9.63837579e-08, 9.07179214e-08, 1.17283562e-07, 6.75093045e-08, 1.14334779e-07, 2.50000000e-07, 2.64800153e-07, 3.12030533e-07, 3.10153662e-07, 3.40728375e-07, 3.70093523e-07, 4.03195069e-07, 4.17789421e-07, 4.35302368e-07, 3.89936820e-07])
+        params = np.array([5.34634710e-08, 6.02922202e-08, 6.69749574e-08, 7.38324792e-08, 8.37554561e-08, 9.63380406e-08, 8.81464586e-08, 1.24898636e-07, 9.33692333e-08, 1.03809797e-07, 2.69653308e-07, 2.96140448e-07, 3.05995912e-07, 2.88369116e-07, 3.29398414e-07, 3.48629369e-07, 4.17346711e-07, 4.26471324e-07, 4.52617430e-07, 4.05426277e-07])
        # params = params * 1e6 / dbu
 
         # Taper Silicon core Layer

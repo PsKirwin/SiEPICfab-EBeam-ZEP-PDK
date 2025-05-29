@@ -15,7 +15,9 @@ class ebeam_pcell_fractal_nanowire(pya.PCellDeclarationHelper):
     self.TECHNOLOGY = TECHNOLOGY
 
     # Override NbTiN to hardcoded 1/69
-    self.param("layer", self.TypeLayer, "Layer - NW", default=pya.LayerInfo(1, 69))
+    self.param("layer", self.TypeLayer, "Layer - NW", default=TECHNOLOGY['NbTiN'])
+    self.param("LayerMetal", self.TypeLayer, "Au/Ti Layer", default=TECHNOLOGY['Ti/Au'])    
+
     self.param("pinrec", self.TypeLayer, "PinRec Layer", default=TECHNOLOGY['PinRec'])
     self.param("devrec", self.TypeLayer, "DevRec Layer", default=TECHNOLOGY['DevRec'])
     self.param("radius_scale", self.TypeDouble, "radius scale (4 minimum)", default = 4)
@@ -43,7 +45,8 @@ class ebeam_pcell_fractal_nanowire(pya.PCellDeclarationHelper):
     LayerSiN = ly.layer(LayerSi)
     LayerPinRecN = ly.layer(self.pinrec)
     LayerDevRecN = ly.layer(self.devrec)
-    LayerMetal = ly.layer(11,0) #Ti/Au layer
+    LayerMetal = self.LayerMetal #Ti/Au layer
+    LayerMetal = ly.layer(LayerMetal)
 
     nw_width = self.nw_width/dbu
     w = nw_width
@@ -129,7 +132,7 @@ class ebeam_pcell_fractal_nanowire(pya.PCellDeclarationHelper):
     # Vertically stack the final points
     final_points = np.vstack((x_final, y_final)).T
     fractal = pya.Region()  
-    pts1 = [Point(x, y) for x, y in zip(final_points[:, 0], final_points[:, 1]- y_all_1[-1]+l/2)]
+    pts1 = [Point(x, y) for x, y in zip(final_points[:, 0], final_points[:, 1]- y_all_1[-1])]
     #pts1 = [Point(x, y) for x, y in zip(final_points[:, 0], final_points[:, 1])]
     fractal.insert(Polygon(pts1))
 
@@ -137,13 +140,13 @@ class ebeam_pcell_fractal_nanowire(pya.PCellDeclarationHelper):
     square1 = pya.Region()  
     #W = radius + 0.0005/dbu+w/2
     W = x_all_2[-1]
-    square1.insert(pya.Box(-W, -l/2, W, l/2)) #pya.Point(w/2+0.35,l/2), pya.Point(w/2+0.35,-l/2), pya.Point(0.35-w/2,l/2-s), pya.Point(w/2,l/2-s), pya.Point(w/2,-l/2)])
+    square1.insert(pya.Box(-W, -l/2, W, 0)) #pya.Point(w/2+0.35,l/2), pya.Point(w/2+0.35,-l/2), pya.Point(0.35-w/2,l/2-s), pya.Point(w/2,l/2-s), pya.Point(w/2,-l/2)])
     #self.cell.shapes(LayerSiN).insert(square1)
 
     square2 = pya.Region()
     #W_2 = radius+ 0.0005/dbu-w/2
     W_2 = W - nw_width
-    square2.insert(pya.Box(-W_2, -l/2, W_2, l/2 ))
+    square2.insert(pya.Box(-W_2, -l/2, W_2, 0 ))
     #self.cell.shapes(LayerSiN).insert(square2)
 
     taper1 = pya.Region()
@@ -181,7 +184,7 @@ class ebeam_pcell_fractal_nanowire(pya.PCellDeclarationHelper):
     radius = W
 
     #draw devrec box
-    devrec_box = [Point(-2*(radius+2*w),-l/2),Point(2*(radius+2*w),-l/2),Point(2*(radius+2*w),l/2),Point(-2*(radius+2*w),l/2)]
+    devrec_box = [Point(-2*(radius+2*w),-l/2),Point(2*(radius+2*w),-l/2),Point(2*(radius+2*w),0),Point(-2*(radius+2*w),0)]
     #place devrec box
     shapes(LayerDevRecN).insert(Polygon(devrec_box))
     

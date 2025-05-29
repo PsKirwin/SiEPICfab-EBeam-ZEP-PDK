@@ -15,13 +15,14 @@ class ebeam_pcell_bend_NW_modified(pya.PCellDeclarationHelper):
     self.TECHNOLOGY = TECHNOLOGY
 
     # Override NbTiN to hardcoded 1/69
-    self.param("layer", self.TypeLayer, "Layer - NW", default=pya.LayerInfo(1, 69))
+    self.param("layer", self.TypeLayer, "Layer - NW", default=TECHNOLOGY['NbTiN'])
+    self.param("LayerMetal", self.TypeLayer, "Au/Ti Layer", default=TECHNOLOGY['Ti/Au'])
     self.param("pinrec", self.TypeLayer, "PinRec Layer", default=TECHNOLOGY['PinRec'])
     self.param("devrec", self.TypeLayer, "DevRec Layer", default=TECHNOLOGY['DevRec'])
     self.param("w", self.TypeDouble, "NW width (microns)", default = 0.05)
     self.param("l", self.TypeDouble, "NW length (microns)", default = 100)
     self.param("bend_w", self.TypeDouble, "Bend Width (microns)", default = 0.05)
-    self.param("radius", self.TypeDouble, "radius (microns)", default = 0.175)
+    self.param("radius", self.TypeDouble, "radius (microns)", default = 0.1625)
     self.param("n_vertices", self.TypeInt, "Vertices of a hole", default = 128)
 
 
@@ -47,7 +48,8 @@ class ebeam_pcell_bend_NW_modified(pya.PCellDeclarationHelper):
     LayerSiN = ly.layer(LayerSi)
     LayerPinRecN = ly.layer(self.pinrec)
     LayerDevRecN = ly.layer(self.devrec)
-    LayerMetal = ly.layer(11,0) #Ti/Au layer
+    LayerMetal = self.LayerMetal #Ti/Au layer
+    LayerMetal = ly.layer(LayerMetal)
 
     w = self.w/dbu
     l = self.l/dbu

@@ -31,9 +31,29 @@ by Jasmina Brar
 
 """
 
-library_folders = ["SiEPICfab_EBeam_ZEP_pcells", "SiEPICfab_EBeam_ZEP_beta_pcells"]
-library_names = ["SiEPICfab_EBeam_ZEP", "SiEPICfab_EBeam_ZEP_beta"]
-tech_names = ["SiEPICfab_EBeam_ZEP", "SiEPICfab_EBeam_ZEP"]
+
+library_folders = [
+    "SiEPICfab_EBeam_ZEP_pcells",
+    "SiEPICfab_EBeam_ZEP_beta_pcells",
+    "SiEPICfab_EBeam_ZEP_SNSPD_pcells"
+]
+
+library_names = [
+    "SiEPICfab_EBeam_ZEP",
+    "SiEPICfab_EBeam_ZEP_beta",
+    "SiEPICfab_EBeam_ZEP_SNSPD"
+]
+
+tech_names = [
+    "SiEPICfab_EBeam_ZEP",
+    "SiEPICfab_EBeam_ZEP",
+    "SiEPICfab_EBeam_ZEP"
+]
+
+
+# library_folders = ["SiEPICfab_EBeam_ZEP_pcells", "SiEPICfab_EBeam_ZEP_beta_pcells"]
+# library_names = ["SiEPICfab_EBeam_ZEP", "SiEPICfab_EBeam_ZEP_beta"]
+# tech_names = ["SiEPICfab_EBeam_ZEP", "SiEPICfab_EBeam_ZEP"]
 
 # library_folders = ["SiEPICfab_EBeam_ZEP_pcells", "SiEPICfab_EBeam_ZEP_beta_pcells", "SiEPICfab_EBeam_ZEP_SNSPD_pecells" ]
 # library_names = ["SiEPICfab_EBeam_ZEP", "SiEPICfab_EBeam_ZEP_beta" , "SiEPICfab_EBeam_ZEP_SNSPD"]
