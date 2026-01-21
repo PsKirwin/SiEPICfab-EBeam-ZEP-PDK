@@ -52,8 +52,8 @@
    <source>1/2@1</source>
   </group-members>
   <group-members>
-    <frame-color>#bbccdd</frame-color>
-    <fill-color>#bbccdd</fill-color>
+    <frame-color>#ad5558</frame-color>
+    <fill-color>#ad5558</fill-color>
     <frame-brightness>0</frame-brightness>
     <fill-brightness>0</fill-brightness>
     <dither-pattern>I14</dither-pattern>
@@ -101,6 +101,23 @@
    <animation>0</animation>
    <name>Si_etch_lowres</name>
    <source>101/0@1</source>
+  </group-members>
+  <group-members>
+   <frame-color>#a4a5a6</frame-color>
+   <fill-color>#a4a5a6</fill-color>
+   <frame-brightness>0</frame-brightness>
+   <fill-brightness>0</fill-brightness>
+   <dither-pattern>I14</dither-pattern>
+   <line-style/>
+   <valid>true</valid>
+   <visible>true</visible>
+   <transparent>true</transparent>
+   <width>1</width>
+   <marked>false</marked>
+   <xfill>false</xfill>
+   <animation>0</animation>
+   <name>Si_etch_partial</name>
+   <source>102/0@1</source>
   </group-members>
  </properties>
  <properties>
