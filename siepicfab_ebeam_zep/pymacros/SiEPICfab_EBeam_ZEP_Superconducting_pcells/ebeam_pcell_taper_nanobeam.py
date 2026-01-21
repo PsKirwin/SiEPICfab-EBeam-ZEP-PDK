@@ -19,7 +19,7 @@ class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
         load_Waveguides_by_Tech(self.technology_name)
 
         self.param("w", self.TypeDouble, "Waveguide width (microns)", default=0.5)
-        self.param("s", self.TypeDouble, "Cavity length (microns)", default=5)
+        self.param("s", self.TypeDouble, "Cavity length (microns)", default=5.3956)
         self.param("wg_l", self.TypeDouble, "Straight Waveguide length (microns)", default=0)
 
         self.param("n2", self.TypeInt, "Number of max radii holes", default=1)
@@ -29,6 +29,10 @@ class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
 
         self.param("enable_pos", self.TypeInt, "Enable positive side reflectors (1=True, 0=False)", default=1)
         self.param("enable_neg", self.TypeInt, "Enable negative side reflectors (1=True, 0=False)", default=1)
+
+
+        self.param("pitch_scale", self.TypeDouble, "linear pitch scale (the m in y=mx+b) (unitless)", default=1.1764)
+        self.param("pitch_offset", self.TypeDouble, "linear pitch offset (the b in y=mx+b) (in nm)", default=281.2)
 
 
         self.param("n_vertices", self.TypeInt, "Vertices of a hole", default=32)
@@ -80,6 +84,8 @@ class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
         truncation_ext = self.truncation_ext / dbu
         enable_pos = bool(self.enable_pos)
         enable_neg = bool(self.enable_neg)
+        pitch_scale = self.pitch_scale  # convert to dbu
+        pitch_offset = self.pitch_offset
 
 
         # function to generate points to create a circle
@@ -171,7 +177,7 @@ class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
             x_pos = [s / 2]
             for i in range(1, len(r)):
                 r_avg = 0.5 * (r[i - 1] + r[i])
-                x_pos.append(x_pos[i - 1] + 1.22 * r_avg + 308)
+                x_pos.append(x_pos[i - 1] + pitch_scale * r_avg + pitch_offset)
             r_pos = r
 
         x_neg = []
@@ -186,7 +192,7 @@ class ebeam_pcell_taper_nanobeam(pya.PCellDeclarationHelper):
                 x_neg = [-s / 2]
                 for i in range(1, len(r_mirror)):
                     r_avg = 0.5 * (r_mirror[i - 1] + r_mirror[i])
-                    x_neg.append(x_neg[i - 1] - (1.22 * r_avg + 308))
+                    x_neg.append(x_neg[i - 1] - (pitch_scale * r_avg + pitch_offset))
                 r_neg = r_mirror
 
         x_all = x_neg + x_pos

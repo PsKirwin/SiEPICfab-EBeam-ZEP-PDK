@@ -18,8 +18,8 @@ load_klayout_library(tech, 'SiEPICfab_EBeam_ZEP', "v%s, Components with models" 
 load_klayout_library(tech, 'SiEPICfab_EBeam_ZEP_Beta', "v%s, Beta components" % version, 
     'pymacros/SiEPICfab_EBeam_ZEP_beta_fixed','pymacros/SiEPICfab_EBeam_ZEP_beta_pcells', 
     verbose=verbose)
-load_klayout_library(tech, 'SiEPICfab_EBeam_ZEP_SNSPD', "v%s, SNSPD components" % version, 
-    'pymacros/SiEPICfab_EBeam_ZEP_SNSPD_fixed','pymacros/SiEPICfab_EBeam_ZEP_SNSPD_pcells', 
+load_klayout_library(tech, 'SiEPICfab_EBeam_ZEP_Superconducting', "v%s, Superconducting components" % version, 
+    'pymacros/SiEPICfab_EBeam_ZEP_Superconducting_fixed','pymacros/SiEPICfab_EBeam_ZEP_Superconducting_pcells', 
     verbose=verbose)
 load_klayout_library(tech, 'SiEPICfab_EBeam_ZEP_pkirwin', "v%s, Phil components" % version, 
     'pymacros/SiEPICfab_EBeam_ZEP_pkirwin_fixed','pymacros/SiEPICfab_EBeam_ZEP_pkirwin_pcells', 

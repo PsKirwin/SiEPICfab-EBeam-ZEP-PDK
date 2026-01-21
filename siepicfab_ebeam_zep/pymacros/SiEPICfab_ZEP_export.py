@@ -188,6 +188,7 @@ def export_for_fabrication(flatten=False, replace_IP=False):
     save_options.add_layer(ly.layer(LayerInfo(101,0)), LayerInfo())# Si etch low res
     save_options.add_layer(ly.layer(LayerInfo(11,0)), LayerInfo(12,0)) # M1
     save_options.add_layer(ly.layer(LayerInfo(12,0)), LayerInfo()) # M2
+    save_options.add_layer(ly.layer(LayerInfo(13,0)), LayerInfo()) # M2
     save_options.add_layer(ly.layer(LayerInfo(99,0)), LayerInfo()) # Floorplan
     save_options.add_layer(ly.layer(LayerInfo(8100,0)), LayerInfo()) # EBL regions
     save_options.add_layer(ly.layer(LayerInfo(10,0)), LayerInfo()) # Text

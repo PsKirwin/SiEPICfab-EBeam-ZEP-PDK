@@ -83,7 +83,7 @@ class Enumerate(pya.PCellDeclarationHelper):
     self.param("width", self.TypeDouble, "Digit width (microns)", default = 40)
     self.param("text", self.TypeString, "String to display (e.g., 1-23-456)", default="123")
 
-    self.param("layer", self.TypeLayer, "Layer", default = LayerInfo(22, 0))
+    self.param("layer", self.TypeLayer, "Layer", default = LayerInfo(13, 0))
     
   def display_text_impl(self):
     # Provide a descriptive text for the cell

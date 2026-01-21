@@ -165,7 +165,7 @@
 	  <model>ebeam_wg_strip_TE_1550</model>
     <wavelength>1550</wavelength>
 	  <bezier>0.20</bezier>
-      <radius>10.0</radius>
+      <radius>20.0</radius>
       <width>0.5</width>
 	  <sbends>true</sbends>
  	  <component>
@@ -587,7 +587,7 @@
 	  <model>ebeam_wg_strip_TE_1550</model>
     <wavelength>1550</wavelength>
 	  <bezier>0.20</bezier>
-      <radius>10.0</radius>
+      <radius>20.0</radius>
       <width>0.5</width>
 	  <sbends>true</sbends>
  	  <component>
