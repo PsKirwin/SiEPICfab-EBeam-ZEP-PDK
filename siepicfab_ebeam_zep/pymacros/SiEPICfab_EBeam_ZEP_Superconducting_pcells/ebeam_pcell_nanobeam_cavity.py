@@ -38,6 +38,7 @@ class ebeam_pcell_nanobeam_cavity(pya.PCellDeclarationHelper):
     self.param("n_type", self.TypeInt, "1 if ZEP, 0 if HSQ", default = 0)  
     self.param("layer", self.TypeLayer, "Layer - Waveguide", default = TECHNOLOGY['Si_core'])
     self.param("cladlayer", self.TypeLayer, "Cladding Layer", default = TECHNOLOGY['Si_clad'])
+    self.param("clad_width", self.TypeDouble, "Cladding width (microns)", default = 2.0)
     self.param("pinrec", self.TypeLayer, "PinRec Layer", default = TECHNOLOGY['PinRec'])
     self.param("devrec", self.TypeLayer, "DevRec Layer", default = TECHNOLOGY['DevRec'])
     self.param("etch", self.TypeLayer, "oxide etch layer", default = TECHNOLOGY['Si_etch_highres'])
@@ -81,6 +82,7 @@ class ebeam_pcell_nanobeam_cavity(pya.PCellDeclarationHelper):
     n_type = self.n_type
     pitch_scale = self.pitch_scale
     pitch_offset = self.pitch_offset
+    clad_width = self.clad_width/dbu
   
     # function to generate points to create a circle
     def circle(x,y,r):
@@ -263,9 +265,10 @@ class ebeam_pcell_nanobeam_cavity(pya.PCellDeclarationHelper):
     dev = Box(xa, -w*2, xb, w*2 )
     shapes(LayerDevRecN).insert(dev)
 
-    shapeClad = pya.Region()
-    shapeClad += shapes_SiN
-    region_devrec = Region(dev)
-    region_devrec2 = Region(dev).size(2500)
-    shapeClad = shapeClad.size(2000) - (region_devrec2-region_devrec)
+    #shapeClad = pya.Region()
+    shapeClad = Box(xa, -clad_width/2, xb, clad_width/2)
+    #shapeClad += shapes_SiN
+    #region_devrec = Region(dev)
+    #region_devrec2 = Region(dev).size(2500)
+    #shapeClad = shapeClad.size(clad_width) - (region_devrec2-region_devrec)
     shapes(LayerCladN).insert(shapeClad)
