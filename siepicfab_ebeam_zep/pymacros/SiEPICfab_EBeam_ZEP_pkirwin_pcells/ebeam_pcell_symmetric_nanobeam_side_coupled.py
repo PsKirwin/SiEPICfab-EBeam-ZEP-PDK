@@ -40,7 +40,7 @@ class ebeam_pcell_symmetric_nanobeam_side_coupled(pya.PCellDeclarationHelper):
         self.param("pinrec", self.TypeLayer, "PinRec Layer", default=TECHNOLOGY['PinRec'])
         self.param("devrec", self.TypeLayer, "DevRec Layer", default=TECHNOLOGY['DevRec'])
         self.param("etch", self.TypeLayer, "oxide etch layer", default=TECHNOLOGY['Si_etch_highres'])
-        self.param("extra_Si", self.TypeLayer, "Extra Si Layer", default=TECHNOLOGY['Si_etch_highres_nobias'])
+        self.param("extra_Si", self.TypeLayer, "Extra Si Layer", default=TECHNOLOGY['Si_etch_highres'])
         self.param("truncation_ext", self.TypeDouble,"Extra waveguide length (microns) for PreFab truncation handling", default=0.0)
 
         self.param("coupler_gap", self.TypeDouble, "gap between bus and cavity (microns)", default=0.2)
